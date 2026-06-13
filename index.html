@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NEMA Fashion | Mitindo Bora ya Wanawake</title>
+<!-- Google Fonts + Font Awesome -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fef9f5;
+    color: #1e1e2a;
+    scroll-behavior: smooth;
+  }
+
+  /* Navigation Bar */
+  .navbar {
+    background: #0a0a14;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(255,215,180,0.2);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .logo h1 {
+    font-size: 1.9rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #f5e7d9, #e6c8a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: #fae3b6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover {
+    color: #d4af7a;
+  }
+
+  /* Language Toggle Button */
+  .lang-toggle {
+    background: #d4af7a;
+    border: none;
+    border-radius: 60px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s;
+    color: #1e1e1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lang-toggle:hover {
+    background: #e6c8a0;
+    transform: scale(0.97);
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    background: linear-gradient(145deg, #fff8f2 0%, #f7ede3 100%);
+  }
+
+  .hero h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #2c221b;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    color: #6b4e3a;
+    margin-top: 0.8rem;
+  }
+
+  /* Search Bar - Now near products */
+  .search-section {
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .search-bar {
+    background: white;
+    border: 2px solid #decba4;
+    border-radius: 60px;
+    padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    transition: all 0.3s;
+  }
+
+  .search-bar:focus-within {
+    border-color: #cb9c6e;
+    box-shadow: 0 0 0 3px rgba(203,156,110,0.2);
+  }
+
+  .search-bar input {
+    flex: 1;
+    border: none;
+    padding: 0.8rem 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+  }
+
+  .search-bar button {
+    background: #d4af7a;
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1e1e1a;
+    transition: 0.2s;
+    font-family: inherit;
+  }
+
+  .search-bar button:hover {
+    background: #be8c5c;
+    color: white;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 1.5rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1.5px solid #decba4;
+    padding: 0.6rem 1.6rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #3a2c23;
+    font-family: inherit;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: #decba4;
+    color: #1e1e1a;
+    border-color: #decba4;
+    transform: scale(0.97);
+  }
+
+  /* Products Grid */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Skeleton Loader */
+  .skeleton-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid #f0e2d4;
+  }
+
+  .skeleton-img {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .skeleton-text {
+    height: 20px;
+    background: #e8e8e8;
+    margin: 1rem;
+    border-radius: 8px;
+  }
+
+  .skeleton-text.short {
+    width: 60%;
+  }
+
+  .skeleton-text.medium {
+    width: 80%;
+  }
+
+  .skeleton-button {
+    height: 45px;
+    background: #e8e8e8;
+    margin: 0.5rem 1rem 1.2rem;
+    border-radius: 100px;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02), 0 6px 6px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f0e2d4;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+    border-color: #ecd9c0;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.02);
+  }
+
+  .card h3 {
+    margin: 1rem 1rem 0.3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2f241d;
+  }
+
+  .card-summary {
+    margin: 0 1rem 0.5rem;
+    font-size: 0.85rem;
+    color: #7a5a44;
+    line-height: 1.3;
+  }
+
+  .price-badge {
+    margin: 0 1rem;
+    font-weight: 700;
+    color: #b47c44;
+    font-size: 1.1rem;
+  }
+
+  .availability {
+    margin: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    display: inline-block;
+    background: #f2e6dc;
+    padding: 4px 12px;
+    border-radius: 40px;
+    width: fit-content;
+    color: #8b5a35;
+  }
+
+  .card-buttons {
+    margin: 0.8rem 1rem 1.2rem;
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-wa, .btn-details {
+    flex: 1;
+    padding: 0.7rem 0;
+    border: none;
+    border-radius: 100px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+  }
+
+  .btn-wa {
+    background: #25a55b;
+    color: white;
+  }
+
+  .btn-wa:hover {
+    background: #1b8b4b;
+    transform: scale(0.98);
+  }
+
+  .btn-details {
+    background: #2b211c;
+    color: #ffefdf;
+  }
+
+  .btn-details:hover {
+    background: #be8c5c;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-content {
+    background: white;
+    max-width: 900px;
+    width: 90%;
+    border-radius: 32px;
+    overflow-y: auto;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: fadeInUp 0.3s ease;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #2b211c;
+    background: rgba(255,255,240,0.9);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    z-index: 10;
+  }
+
+  .modal-close:hover {
+    background: #cb9c6e;
+    color: white;
+  }
+
+  .modal-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .modal-img {
+    flex: 1.2;
+    background: #f9f2ea;
+    border-radius: 28px 0 0 28px;
+    overflow: hidden;
+  }
+
+  .modal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .modal-info {
+    flex: 1;
+    padding: 2rem 1.8rem;
+  }
+
+  .modal-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #2f241d;
+  }
+
+  .modal-info .modal-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #b47c44;
+    margin: 0.5rem 0;
+  }
+
+  .modal-info .modal-availability {
+    background: #f2e6dc;
+    padding: 6px 14px;
+    border-radius: 60px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: fit-content;
+    margin: 0.75rem 0;
+  }
+
+  .modal-desc, .modal-material, .modal-fit {
+    margin: 0.8rem 0;
+    line-height: 1.4;
+    color: #4e3a2c;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 1.5rem;
+  }
+
+  .modal-btn {
+    flex: 1;
+    padding: 0.9rem;
+    border-radius: 60px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .modal-btn-wa {
+    background: #25a55b;
+    color: white;
+  }
+
+  .modal-btn-check {
+    background: #decba4;
+    color: #2b211c;
+  }
+
+  /* Scroll to Top Button */
+  .scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #cb9c6e;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 99;
+    border: none;
+    font-size: 1.2rem;
+  }
+
+  .scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-top:hover {
+    background: #a87548;
+    transform: scale(1.05);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #9a7b62;
+    border-top: 1px solid #eedfcb;
+  }
+
+  @media (max-width: 700px) {
+    .products {
+      padding: 1rem;
+      gap: 1rem;
+    }
+    .hero h2 {
+      font-size: 1.9rem;
+    }
+    .modal-grid {
+      flex-direction: column;
+    }
+    .modal-img {
+      border-radius: 28px 28px 0 0;
+      max-height: 280px;
+    }
+    .navbar {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav-links {
+      justify-content: center;
+    }
+    .search-bar {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="logo">
+    <h1><i class="fas fa-crown" style="font-size: 1.3rem; color:#dbbc87;"></i> <span data-en="NEMA Fashion" data-sw="NEMA Fashion">NEMA Fashion</span></h1>
+  </div>
+  <div class="nav-links">
+    <a data-en="Home" data-sw="Nyumbani" onclick="scrollToSection('home')">Home</a>
+    <a data-en="Collection" data-sw="Mkusanyiko" onclick="scrollToSection('products')">Collection</a>
+    <a data-en="Contact" data-sw="Wasiliana" id="contactLink">Contact</a>
+    <button class="lang-toggle" id="langToggleBtn"><i class="fas fa-language"></i> <span id="langText">Kiswahili</span></button>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <h2 data-en="Discover Your Signature Style" data-sw="Gundua Mtindo Wako Binafsi">Discover Your Signature Style</h2>
+  <p data-en="Curated elegance • WhatsApp inquiry • Real-time availability" data-sw="Urembo uliochaguliwa • Maswali kwa WhatsApp • Upatikanaji wa wakati halisi">Curated elegance • WhatsApp inquiry • Real-time availability</p>
+</section>
+
+<!-- Search Bar - Now near products -->
+<div class="search-section">
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search products... | Tafuta bidhaa...">
+      <button id="searchBtn"><i class="fas fa-search"></i> <span data-en="Search" data-sw="Tafuta">Search</span></button>
+    </div>
+  </div>
+</div>
+
+<section class="filters" id="filterContainer"></section>
+
+<section id="productsContainer" class="products"></section>
+
+<footer>
+  <p>© NEMA Fashion — <span data-en="Timeless elegance, curated for you" data-sw="Urembo usio na wakati, uliochaguliwa kwako">Timeless elegance, curated for you</span></p>
+  <p style="margin-top: 0.5rem;"><i class="fab fa-whatsapp"></i> WhatsApp: +255 685 757 069</p>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Product Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-close" id="closeModalBtn">&times;</div>
+    <div class="modal-grid">
+      <div class="modal-img">
+        <img id="modalImage" src="" alt="Product detail" loading="lazy">
+      </div>
+      <div class="modal-info">
+        <h2 id="modalName"></h2>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-availability" id="modalAvailability"></div>
+        <div class="modal-desc"><strong id="descLabel">Description:</strong> <span id="modalDesc"></span></div>
+        <div class="modal-material"><strong id="materialLabel">Material:</strong> <span id="modalMaterial"></span></div>
+        <div class="modal-fit"><strong id="fitLabel">Fit / Sizing:</strong> <span id="modalFit"></span></div>
+        <div class="modal-actions">
+          <button class="modal-btn modal-btn-wa" id="modalWhatsAppBtn"><i class="fab fa-whatsapp"></i> <span id="askWaLabel">Ask on WhatsApp</span></button>
+          <button class="modal-btn modal-btn-check" id="modalCheckBtn"><i class="fas fa-check-circle"></i> <span id="checkLabel">Check Availability</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ==============================================
+  // BILINGUAL SUPPORT (ENGLISH + SWAHILI)
+  // ==============================================
+  let currentLang = 'en'; // 'en' or 'sw'
+  
+  const translations = {
+    en: {
+      descLabel: "Description:",
+      materialLabel: "Material:",
+      fitLabel: "Fit / Sizing:",
+      askWaLabel: "Ask on WhatsApp",
+      checkLabel: "Check Availability",
+      noProducts: "✨ No products match your selection. Explore our collection! ✨",
+      noProductsSw: "✨ Hakuna bidhaa zinazolingana na uchaguzi wako. Chunguza mkusanyiko wetu! ✨"
+    },
+    sw: {
+      descLabel: "Maelezo:",
+      materialLabel: "Nyenzo:",
+      fitLabel: "Kina / Ukubwa:",
+      askWaLabel: "Uliza kwa WhatsApp",
+      checkLabel: "Angalia Upatikanaji",
+      noProducts: "✨ Hakuna bidhaa zinazolingana na uchaguzi wako. Chunguza mkusanyiko wetu! ✨",
+      noProductsSw: "✨ Hakuna bidhaa zinazolingana na uchaguzi wako. Chunguza mkusanyiko wetu! ✨"
+    }
+  };
+  
+  function updateUILanguage() {
+    // Update all elements with data-en and data-sw attributes
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (currentLang === 'en') {
+        el.textContent = el.getAttribute('data-en');
+      } else {
+        el.textContent = el.getAttribute('data-sw');
+      }
+    });
+    
+    // Update modal labels
+    if (document.getElementById('descLabel')) {
+      document.getElementById('descLabel').textContent = translations[currentLang].descLabel;
+      document.getElementById('materialLabel').textContent = translations[currentLang].materialLabel;
+      document.getElementById('fitLabel').textContent = translations[currentLang].fitLabel;
+      document.getElementById('askWaLabel').textContent = translations[currentLang].askWaLabel;
+      document.getElementById('checkLabel').textContent = translations[currentLang].checkLabel;
+    }
+    
+    // Update search placeholder
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.placeholder = currentLang === 'en' ? 'Search products...' : 'Tafuta bidhaa...';
+    }
+    
+    // Update lang toggle button text
+    const langText = document.getElementById('langText');
+    if (langText) {
+      langText.textContent = currentLang === 'en' ? 'Kiswahili' : 'English';
+    }
+  }
+  
+  function toggleLanguage() {
+    currentLang = currentLang === 'en' ? 'sw' : 'en';
+    updateUILanguage();
+    // Re-render products to update availability text etc (optional but good)
+    applyFiltersAndSearch();
+  }
+  
+  // Helper to get translated text for dynamic content
+  function t(key) {
+    return translations[currentLang][key] || translations['en'][key] || key;
+  }
+  
+  // ==============================================
+  // WHATSAPP
+  // ==============================================
+  const BUSINESS_NUMBER = "255685757069";
+  
+  function generateWhatsAppMessage(productName) {
+    const message = currentLang === 'en' 
+      ? `Hello NEMA Fashion,\n\nI am interested in:\n\n${productName}\n\nPlease confirm:\n• Availability\n• Available colors\n• Available sizes\n• Current price\n\nThank you.`
+      : `Habari NEMA Fashion,\n\nNina nia ya:\n\n${productName}\n\nTafadhali thibitisha:\n• Upatikanaji\n• Rangi zilizopo\n• Ukubwa uliopo\n• Bei ya sasa\n\nAsante.`;
+    return encodeURIComponent(message);
+  }
+  
+  function openWhatsApp(productName) {
+    const message = generateWhatsAppMessage(productName);
+    window.open(`https://wa.me/${BUSINESS_NUMBER}?text=${message}`, "_blank");
+  }
+  
+  // Contact link handler
+  document.getElementById("contactLink")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openWhatsApp("NEMA Fashion");
+  });
+  
+  // ==============================================
+  // PRODUCT DATABASE
+  // ==============================================
+  const masterProducts = [
+    { "id": 1, "name": "African Bubu", "price": 129900, "image": "https://i.ibb.co/Zpw2hDhC/african-bubu-jpg.jpg", "category": "dress", "summary": "Flowing African Bubu with vibrant print.", "summarySw": "Bubu ya Kiafrika inayobeba na chapa hai.", "description": "Classic Bubu gown, lightweight and breathable.", "descriptionSw": "Gauni la kawaida la Bubu, nyepesi na inayopumua.", "material": "Ankara Cotton", "materialSw": "Pamba ya Ankara", "fit": "Free Size", "fitSw": "Ukubwa Huru", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["bubu", "african", "ankara"] },
+    
+    { "id": 2, "name": "Batik Cotton Maxi Gown", "price": 159000, "image": "https://i.ibb.co/7tY3WRvk/batik-maxi-gown-jpg.jpg", "category": "dress", "summary": "Artisan batik print maxi gown.", "summarySw": "Gauni refu la batiki la kisanii.", "description": "Hand-dyed batik maxi dress, elegant and flowy.", "descriptionSw": "Gauni refu la batiki lililotiwa rangi kwa mkono, kifahari na kinachotiririka.", "material": "100% Cotton Batik", "materialSw": "100% Pamba Batiki", "fit": "Relaxed fit", "fitSw": "Kina Kisawasawa", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["batik", "maxi", "gown"] },
+    
+    { "id": 3, "name": "Elegant Floor-Length Formal Gown", "price": 259000, "image": "https://i.ibb.co/v6ZZKyvp/formal-gown-jpg.jpg", "category": "dress", "summary": "Champagne satin formal gown.", "summarySw": "Gauni rasmi la satin champagne.", "description": "Floor-length gown with elegant draping.", "descriptionSw": "Gauni la urefu wa sakafu lenye kuelemka kifahari.", "material": "Satin Blend", "materialSw": "Mchanganyiko wa Satin", "fit": "Tailored fit, sizes S-XXL", "fitSw": "Kina maalum, ukubwa S-XXL", "availability": "Made to Order", "availabilitySw": "Hufanywa Kwa Oda", "keywords": ["formal", "gown", "evening"] },
+    
+    { "id": 4, "name": "High-Waisted Denim Pants", "price": 68500, "image": "https://i.ibb.co/DDTNsT56/denim-pants-jpg.jpg", "category": "pants", "summary": "Classic high-waisted denim.", "summarySw": "Denim ya kawaida ya kiuno cha juu.", "description": "Stretchy denim pants, perfect for daily chic looks.", "descriptionSw": "Suruali ya denim inayonyoosha, kamili kwa mitindo ya kila siku.", "material": "Cotton Denim", "materialSw": "Denim ya Pamba", "fit": "High-rise, skinny", "fitSw": "Kiuno juu, nyembamba", "availability": "In Stock", "availabilitySw": "Ipo Hifadhini", "keywords": ["denim", "jeans", "high waisted"] },
+    
+    { "id": 5, "name": "High-Waisted Skinny Jeans", "price": 72500, "image": "https://i.ibb.co/0R82T3YK/skinny-jeans-jpg.jpg", "category": "pants", "summary": "Sleek skinny fit jeans.", "summarySw": "Jeans nyembamba laini.", "description": "Ultra-comfortable high-waisted skinny jeans.", "descriptionSw": "Jeans nyembamba za kiuno cha juu zenye starehe zaidi.", "material": "Cotton, Spandex", "materialSw": "Pamba, Spandex", "fit": "Skinny, stretch", "fitSw": "Nyembamba, kunyooka", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["skinny", "jeans", "stretch"] },
+    
+    { "id": 6, "name": "High-Waisted Tiered Maxi Skirt", "price": 79900, "image": "https://i.ibb.co/WvsNYk4H/maxi-skirt-jpg.jpg", "category": "skirt", "summary": "Flowy tiered maxi skirt.", "summarySw": "Sketi refu yenye matabaka.", "description": "Romantic tiered layers with elastic waist.", "descriptionSw": "Matabaka ya kimapenzi na kiuno cha elastic.", "material": "Rayon", "materialSw": "Rayon", "fit": "Free size, elastic band", "fitSw": "Ukubwa huru, bendi ya elastic", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["maxi skirt", "tiered"] },
+    
+    { "id": 7, "name": "Rib-Knit Sports Shorts", "price": 35900, "image": "https://i.ibb.co/9mBXwkqm/womens-boyshort-underwear-jpg.jpg", "category": "active", "summary": "Sporty rib-knit shorts.", "summarySw": "Kaptula za michezo za rib-knit.", "description": "Breathable shorts for lounge or sport.", "descriptionSw": "Kaptula zinazopumua kwa mapumziko au michezo.", "material": "Cotton Rib", "materialSw": "Rib ya Pamba", "fit": "Regular fit", "fitSw": "Kina cha kawaida", "availability": "In Stock", "availabilitySw": "Ipo Hifadhi", "keywords": ["shorts", "sport", "knit"] },
+    
+    { "id": 8, "name": "Kaftan-Style Dress", "price": 114900, "image": "https://i.ibb.co/Z6PSnh5f/kaftan-dress-jpg.jpg", "category": "dress", "summary": "Luxurious kaftan dress.", "summarySw": "Gauni la kaftani la kifahari.", "description": "Effortless kaftan with delicate embroidery.", "descriptionSw": "Kaftani isiyo na bidii yenye embroideri maridadi.", "material": "Viscose", "materialSw": "Viscose", "fit": "Loose fit, one size", "fitSw": "Kina huru, ukubwa mmoja", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["kaftan", "beach", "cover-up"] },
+    
+    { "id": 9, "name": "Knit Cardigan Sweater", "price": 65900, "image": "https://i.ibb.co/5W3qGPPp/cardigan-jpg.jpg", "category": "top", "summary": "Cozy knit cardigan.", "summarySw": "Cardigan ya knitted yenye starehe.", "description": "Open front cardigan, perfect layering.", "descriptionSw": "Cardigan ya mbele wazi, kamili kwa kuweka tabaka.", "material": "Acrylic blend", "materialSw": "Mchanganyiko wa Akriliki", "fit": "Oversized", "fitSw": "Kubwa kuliko kawaida", "availability": "Limited Stock", "availabilitySw": "Hifadhi Chache", "keywords": ["cardigan", "knit", "sweater"] },
+    
+    { "id": 10, "name": "Men's Cotton Boxer Shorts", "price": 29900, "image": "https://i.ibb.co/zV7MtBRM/boxer-shorts-jpg.jpg", "category": "mens", "summary": "Breathable cotton boxers.", "summarySw": "Boxa za pamba zinazopumua.", "description": "Soft elastic waistband boxer shorts.", "descriptionSw": "Kaptula za boxa zenye bendi laini ya elastic.", "material": "Pure Cotton", "materialSw": "Pamba Safi", "fit": "Regular", "fitSw": "Kawaida", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["boxers", "men", "underwear"] },
+    
+    { "id": 11, "name": "Rib-Knit Bodycon Maxi Dress", "price": 99500, "image": "https://i.ibb.co/fVPw7T9k/bodycon-maxi-jpg.jpg", "category": "dress", "summary": "Figure-hugging rib knit.", "summarySw": "Rib knit inayokumbatia mwili.", "description": "Stretchy bodycon maxi dress.", "descriptionSw": "Gauni refu la bodycon linalonyoosha.", "material": "Ribbed Cotton", "materialSw": "Pamba ya Ribbed", "fit": "Bodycon", "fitSw": "Bodycon", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["bodycon", "maxi", "rib"] },
+    
+    { "id": 12, "name": "San Knit Cardigan", "price": 84500, "image": "https://i.ibb.co/zT0LgNds/san-cardigan-jpg.jpg", "category": "top", "summary": "Decorative button cardigan.", "summarySw": "Cardigan yenye vifungo vya mapambo.", "description": "Premium knit with metallic buttons.", "descriptionSw": "Knit ya kiwango cha juu yenye vifungo vya metali.", "material": "Premium Knit", "materialSw": "Knit Bora", "fit": "Relaxed", "fitSw": "Kisawasawa", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["cardigan", "knit", "elegant"] },
+    
+    { "id": 13, "name": "Two-Piece Pajama Set", "price": 74900, "image": "https://i.ibb.co/0jjNVCm4/pajama-set-jpg.jpg", "category": "loungewear", "summary": "Satin pajama set.", "summarySw": "Seti ya pajama ya satin.", "description": "Luxury satin loungewear set.", "descriptionSw": "Seti ya nguo za mapumziko za satin za kifahari.", "material": "Satin", "materialSw": "Satin", "fit": "Loose", "fitSw": "Huru", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["pajama", "loungewear", "set"] },
+    
+    { "id": 14, "name": "Women's Boyshort Underwear", "price": 18900, "image": "https://i.ibb.co/9mBXwkqm/womens-boyshort-underwear-jpg.jpg", "category": "intimates", "summary": "Soft cotton boyshorts.", "summarySw": "Boyshort za pamba laini.", "description": "Breathable everyday boyshort underwear.", "descriptionSw": "Chupi za kila siku za boyshort zinazopumua.", "material": "Cotton Spandex", "materialSw": "Pamba Spandex", "fit": "True to size", "fitSw": "Sawa na ukubwa", "availability": "In Stock", "availabilitySw": "Ipo Hifadhi", "keywords": ["boyshort", "underwear", "cotton"] }
+  ];
+  
+  let currentFilter = "all";
+  let currentSearchTerm = "";
+  let currentDisplayProducts = [];
+  
+  // ==============================================
+  // RENDER FUNCTIONS
+  // ==============================================
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+  
+  function getLocalizedText(product, fieldEn, fieldSw) {
+    if (currentLang === 'sw' && product[fieldSw]) {
+      return product[fieldSw];
+    }
+    return product[fieldEn];
+  }
+  
+  function showSkeletonLoaders() {
+    const container = document.getElementById("productsContainer");
+    if (!container) return;
+    container.innerHTML = "";
+    for (let i = 0; i < 6; i++) {
+      container.innerHTML += `
+        <div class="skeleton-card">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-text"></div>
+          <div class="skeleton-text short"></div>
+          <div class="skeleton-text medium"></div>
+          <div class="skeleton-button"></div>
+        </div>
+      `;
+    }
+  }
+  
+  function renderProducts(productsArray) {
+    const container = document.getElementById("productsContainer");
+    if (!container) return;
+    
+    if (!productsArray.length) {
+      container.innerHTML = `<div style="text-align:center;padding:3rem;background:#fff8f0;border-radius:2rem;">${t('noProducts')}</div>`;
+      return;
+    }
+    
+    container.innerHTML = "";
+    productsArray.forEach((product, index) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.animationDelay = `${index * 0.03}s`;
+      const summary = getLocalizedText(product, 'summary', 'summarySw');
+      const availability = getLocalizedText(product, 'availability', 'availabilitySw');
+      
+      card.innerHTML = `
+        <img class="card-img" src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&auto=format'">
+        <h3>${escapeHtml(product.name)}</h3>
+        <div class="card-summary">${escapeHtml(summary)}</div>
+        <div class="price-badge">TZS ${product.price.toLocaleString()}</div>
+        <div class="availability"><i class="fas fa-info-circle"></i> ${escapeHtml(availability)}</div>
+        <div class="card-buttons">
+          <button class="btn-wa" data-id="${product.id}"><i class="fab fa-whatsapp"></i> ${currentLang === 'en' ? 'Ask on WhatsApp' : 'Uliza kwa WhatsApp'}</button>
+          <button class="btn-details" data-id="${product.id}"><i class="fas fa-eye"></i> ${currentLang === 'en' ? 'View Details' : 'Angalia Maelezo'}</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    
+    document.querySelectorAll('.btn-wa').forEach(btn => {
+      btn.removeEventListener('click', waHandler);
+      btn.addEventListener('click', waHandler);
+    });
+    document.querySelectorAll('.btn-details').forEach(btn => {
+      btn.removeEventListener('click', detailsHandler);
+      btn.addEventListener('click', detailsHandler);
+    });
+  }
+  
+  function waHandler(e) {
+    const cardDiv = e.currentTarget.closest('.card');
+    if (!cardDiv) return;
+    const nameElem = cardDiv.querySelector('h3');
+    if (nameElem) {
+      openWhatsApp(nameElem.innerText);
+    } else {
+      openWhatsApp("this product");
+    }
+  }
+  
+  function detailsHandler(e) {
+    const btn = e.currentTarget;
+    const productId = parseInt(btn.getAttribute('data-id'));
+    const product = masterProducts.find(p => p.id === productId);
+    if (product) {
+      openProductModal(product);
+    }
+  }
+  
+  // ==============================================
+  // MODAL
+  // ==============================================
+  function openProductModal(product) {
+    const modal = document.getElementById("productModal");
+    document.getElementById("modalImage").src = product.image;
+    document.getElementById("modalName").innerText = product.name;
+    document.getElementById("modalPrice").innerHTML = `TZS ${product.price.toLocaleString()}`;
+    
+    const availability = getLocalizedText(product, 'availability', 'availabilitySw');
+    document.getElementById("modalAvailability").innerHTML = `<i class="fas fa-truck"></i> ${availability}`;
+    
+    const description = getLocalizedText(product, 'description', 'descriptionSw');
+    const material = getLocalizedText(product, 'material', 'materialSw');
+    const fit = getLocalizedText(product, 'fit', 'fitSw');
+    
+    document.getElementById("modalDesc").innerText = description;
+    document.getElementById("modalMaterial").innerText = material;
+    document.getElementById("modalFit").innerText = fit;
+    
+    // Update modal button texts based on language
+    document.getElementById("askWaLabel").textContent = translations[currentLang].askWaLabel;
+    document.getElementById("checkLabel").textContent = translations[currentLang].checkLabel;
+    document.getElementById("descLabel").textContent = translations[currentLang].descLabel;
+    document.getElementById("materialLabel").textContent = translations[currentLang].materialLabel;
+    document.getElementById("fitLabel").textContent = translations[currentLang].fitLabel;
+    
+    const modalWaBtn = document.getElementById("modalWhatsAppBtn");
+    const modalCheckBtn = document.getElementById("modalCheckBtn");
+    
+    modalWaBtn.replaceWith(modalWaBtn.cloneNode(true));
+    modalCheckBtn.replaceWith(modalCheckBtn.cloneNode(true));
+    const freshWa = document.getElementById("modalWhatsAppBtn");
+    const freshCheck = document.getElementById("modalCheckBtn");
+    if (freshWa) freshWa.addEventListener("click", () => openWhatsApp(product.name));
+    if (freshCheck) freshCheck.addEventListener("click", () => openWhatsApp(product.name));
+    
+    modal.style.display = "flex";
+  }
+  
+  function closeModal() {
+    const modal = document.getElementById("productModal");
+    modal.style.display = "none";
+  }
+  
+  // ==============================================
+  // FILTERS & SEARCH
+  // ==============================================
+  function applyFiltersAndSearch() {
+    let filtered = [...masterProducts];
+    if (currentFilter !== "all") {
+      filtered = filtered.filter(p => p.category === currentFilter);
+    }
+    if (currentSearchTerm.trim() !== "") {
+      const term = currentSearchTerm.trim().toLowerCase();
+      filtered = filtered.filter(p => {
+        return p.name.toLowerCase().includes(term) ||
+               (p.summary && p.summary.toLowerCase().includes(term)) ||
+               (p.summarySw && p.summarySw.toLowerCase().includes(term)) ||
+               (p.description && p.description.toLowerCase().includes(term)) ||
+               (p.keywords && Array.isArray(p.keywords) && p.keywords.some(k => k.toLowerCase().includes(term)));
+      });
+    }
+    currentDisplayProducts = filtered;
+    renderProducts(currentDisplayProducts);
+  }
+  
+  function setFilter(category) {
+    currentFilter = category;
+    updateFilterUI();
+    applyFiltersAndSearch();
+  }
+  
+  function updateFilterUI() {
+    const btns = document.querySelectorAll(".filter-btn");
+    btns.forEach(btn => {
+      const cat = btn.getAttribute("data-cat");
+      if ((cat === currentFilter) || (cat === "all" && currentFilter === "all")) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  }
+  
+  function buildCategoryFilters() {
+    if (!masterProducts.length) return;
+    const catsSet = new Set();
+    catsSet.add("all");
+    masterProducts.forEach(p => {
+      if (p.category) catsSet.add(p.category);
+    });
+    const filterContainer = document.getElementById("filterContainer");
+    filterContainer.innerHTML = "";
+    const categoryNames = {
+      all: { en: "All", sw: "Zote" },
+      dress: { en: "Dresses", sw: "Nguo" },
+      pants: { en: "Pants", sw: "Suruali" },
+      skirt: { en: "Skirts", sw: "Sketi" },
+      top: { en: "Tops", sw: "Blauzi" },
+      active: { en: "Active", sw: "Michezo" },
+      mens: { en: "Men's", sw: "Wanaume" },
+      loungewear: { en: "Loungewear", sw: "Nguo za Nyumbani" },
+      intimates: { en: "Intimates", sw: "Chupi" }
+    };
+    
+    const sortedCats = Array.from(catsSet).sort();
+    sortedCats.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "filter-btn";
+      const displayName = categoryNames[cat] ? categoryNames[cat][currentLang] : cat;
+      btn.innerHTML = `<i class="fas fa-tag"></i> ${displayName}`;
+      btn.setAttribute("data-cat", cat);
+      btn.addEventListener("click", () => setFilter(cat));
+      filterContainer.appendChild(btn);
+    });
+    setFilter("all");
+  }
+  
+  function setupSearch() {
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    const performSearch = () => {
+      currentSearchTerm = searchInput.value;
+      applyFiltersAndSearch();
+    };
+    searchBtn.addEventListener("click", performSearch);
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") performSearch();
+    });
+  }
+  
+  // ==============================================
+  // SCROLL TO TOP
+  // ==============================================
+  function setupScrollToTop() {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add("visible");
+      } else {
+        scrollBtn.classList.remove("visible");
+      }
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+  
+  function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  
+  // ==============================================
+  // INITIALIZE
+  // ==============================================
+  document.getElementById("closeModalBtn").addEventListener("click", closeModal);
+  window.addEventListener("click", (e) => {
+    const modal = document.getElementById("productModal");
+    if (e.target === modal) closeModal();
+  });
+  
+  document.getElementById("langToggleBtn").addEventListener("click", toggleLanguage);
+  
+  showSkeletonLoaders();
+  
+  setTimeout(() => {
+    buildCategoryFilters();
+    setupSearch();
+    setupScrollToTop();
+    renderProducts(masterProducts);
+    updateUILanguage();
+  }, 200);
+</script>
+</body>
+</html>
