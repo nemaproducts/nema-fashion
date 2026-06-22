@@ -739,34 +739,160 @@
   // PRODUCT DATABASE
   // ==============================================
   const masterProducts = [
-    { "id": 1, "name": "African Bubu", "price": 129900, "image": "https://i.ibb.co/Zpw2hDhC/african-bubu-jpg.jpg", "category": "dress", "summary": "Flowing African Bubu with vibrant print.", "summarySw": "Bubu ya Kiafrika inayobeba na chapa hai.", "description": "Classic Bubu gown, lightweight and breathable.", "descriptionSw": "Gauni la kawaida la Bubu, nyepesi na inayopumua.", "material": "Ankara Cotton", "materialSw": "Pamba ya Ankara", "fit": "Free Size", "fitSw": "Ukubwa Huru", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["bubu", "african", "ankara"] },
     
-    { "id": 2, "name": "Batik Cotton Maxi Gown", "price": 159000, "image": "https://i.ibb.co/7tY3WRvk/batik-maxi-gown-jpg.jpg", "category": "dress", "summary": "Artisan batik print maxi gown.", "summarySw": "Gauni refu la batiki la kisanii.", "description": "Hand-dyed batik maxi dress, elegant and flowy.", "descriptionSw": "Gauni refu la batiki lililotiwa rangi kwa mkono, kifahari na kinachotiririka.", "material": "100% Cotton Batik", "materialSw": "100% Pamba Batiki", "fit": "Relaxed fit", "fitSw": "Kina Kisawasawa", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["batik", "maxi", "gown"] },
-    
-    { "id": 3, "name": "Elegant Floor-Length Formal Gown", "price": 259000, "image": "https://i.ibb.co/v6ZZKyvp/formal-gown-jpg.jpg", "category": "dress", "summary": "Champagne satin formal gown.", "summarySw": "Gauni rasmi la satin champagne.", "description": "Floor-length gown with elegant draping.", "descriptionSw": "Gauni la urefu wa sakafu lenye kuelemka kifahari.", "material": "Satin Blend", "materialSw": "Mchanganyiko wa Satin", "fit": "Tailored fit, sizes S-XXL", "fitSw": "Kina maalum, ukubwa S-XXL", "availability": "Made to Order", "availabilitySw": "Hufanywa Kwa Oda", "keywords": ["formal", "gown", "evening"] },
-    
-    { "id": 4, "name": "High-Waisted Denim Pants", "price": 68500, "image": "https://i.ibb.co/DDTNsT56/denim-pants-jpg.jpg", "category": "pants", "summary": "Classic high-waisted denim.", "summarySw": "Denim ya kawaida ya kiuno cha juu.", "description": "Stretchy denim pants, perfect for daily chic looks.", "descriptionSw": "Suruali ya denim inayonyoosha, kamili kwa mitindo ya kila siku.", "material": "Cotton Denim", "materialSw": "Denim ya Pamba", "fit": "High-rise, skinny", "fitSw": "Kiuno juu, nyembamba", "availability": "In Stock", "availabilitySw": "Ipo Hifadhini", "keywords": ["denim", "jeans", "high waisted"] },
-    
-    { "id": 5, "name": "High-Waisted Skinny Jeans", "price": 72500, "image": "https://i.ibb.co/0R82T3YK/skinny-jeans-jpg.jpg", "category": "pants", "summary": "Sleek skinny fit jeans.", "summarySw": "Jeans nyembamba laini.", "description": "Ultra-comfortable high-waisted skinny jeans.", "descriptionSw": "Jeans nyembamba za kiuno cha juu zenye starehe zaidi.", "material": "Cotton, Spandex", "materialSw": "Pamba, Spandex", "fit": "Skinny, stretch", "fitSw": "Nyembamba, kunyooka", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["skinny", "jeans", "stretch"] },
-    
-    { "id": 6, "name": "High-Waisted Tiered Maxi Skirt", "price": 79900, "image": "https://i.ibb.co/WvsNYk4H/maxi-skirt-jpg.jpg", "category": "skirt", "summary": "Flowy tiered maxi skirt.", "summarySw": "Sketi refu yenye matabaka.", "description": "Romantic tiered layers with elastic waist.", "descriptionSw": "Matabaka ya kimapenzi na kiuno cha elastic.", "material": "Rayon", "materialSw": "Rayon", "fit": "Free size, elastic band", "fitSw": "Ukubwa huru, bendi ya elastic", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["maxi skirt", "tiered"] },
-    
-    { "id": 7, "name": "Rib-Knit Sports Shorts", "price": 35900, "image": "https://i.ibb.co/9mBXwkqm/womens-boyshort-underwear-jpg.jpg", "category": "active", "summary": "Sporty rib-knit shorts.", "summarySw": "Kaptula za michezo za rib-knit.", "description": "Breathable shorts for lounge or sport.", "descriptionSw": "Kaptula zinazopumua kwa mapumziko au michezo.", "material": "Cotton Rib", "materialSw": "Rib ya Pamba", "fit": "Regular fit", "fitSw": "Kina cha kawaida", "availability": "In Stock", "availabilitySw": "Ipo Hifadhi", "keywords": ["shorts", "sport", "knit"] },
-    
-    { "id": 8, "name": "Kaftan-Style Dress", "price": 114900, "image": "https://i.ibb.co/Z6PSnh5f/kaftan-dress-jpg.jpg", "category": "dress", "summary": "Luxurious kaftan dress.", "summarySw": "Gauni la kaftani la kifahari.", "description": "Effortless kaftan with delicate embroidery.", "descriptionSw": "Kaftani isiyo na bidii yenye embroideri maridadi.", "material": "Viscose", "materialSw": "Viscose", "fit": "Loose fit, one size", "fitSw": "Kina huru, ukubwa mmoja", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["kaftan", "beach", "cover-up"] },
-    
-    { "id": 9, "name": "Knit Cardigan Sweater", "price": 65900, "image": "https://i.ibb.co/5W3qGPPp/cardigan-jpg.jpg", "category": "top", "summary": "Cozy knit cardigan.", "summarySw": "Cardigan ya knitted yenye starehe.", "description": "Open front cardigan, perfect layering.", "descriptionSw": "Cardigan ya mbele wazi, kamili kwa kuweka tabaka.", "material": "Acrylic blend", "materialSw": "Mchanganyiko wa Akriliki", "fit": "Oversized", "fitSw": "Kubwa kuliko kawaida", "availability": "Limited Stock", "availabilitySw": "Hifadhi Chache", "keywords": ["cardigan", "knit", "sweater"] },
-    
-    { "id": 10, "name": "Men's Cotton Boxer Shorts", "price": 29900, "image": "https://i.ibb.co/zV7MtBRM/boxer-shorts-jpg.jpg", "category": "mens", "summary": "Breathable cotton boxers.", "summarySw": "Boxa za pamba zinazopumua.", "description": "Soft elastic waistband boxer shorts.", "descriptionSw": "Kaptula za boxa zenye bendi laini ya elastic.", "material": "Pure Cotton", "materialSw": "Pamba Safi", "fit": "Regular", "fitSw": "Kawaida", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["boxers", "men", "underwear"] },
-    
-    { "id": 11, "name": "Rib-Knit Bodycon Maxi Dress", "price": 99500, "image": "https://i.ibb.co/fVPw7T9k/bodycon-maxi-jpg.jpg", "category": "dress", "summary": "Figure-hugging rib knit.", "summarySw": "Rib knit inayokumbatia mwili.", "description": "Stretchy bodycon maxi dress.", "descriptionSw": "Gauni refu la bodycon linalonyoosha.", "material": "Ribbed Cotton", "materialSw": "Pamba ya Ribbed", "fit": "Bodycon", "fitSw": "Bodycon", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["bodycon", "maxi", "rib"] },
-    
-    { "id": 12, "name": "San Knit Cardigan", "price": 84500, "image": "https://i.ibb.co/zT0LgNds/san-cardigan-jpg.jpg", "category": "top", "summary": "Decorative button cardigan.", "summarySw": "Cardigan yenye vifungo vya mapambo.", "description": "Premium knit with metallic buttons.", "descriptionSw": "Knit ya kiwango cha juu yenye vifungo vya metali.", "material": "Premium Knit", "materialSw": "Knit Bora", "fit": "Relaxed", "fitSw": "Kisawasawa", "availability": "Available Now", "availabilitySw": "Inapatikana Sasa", "keywords": ["cardigan", "knit", "elegant"] },
-    
-    { "id": 13, "name": "Two-Piece Pajama Set", "price": 74900, "image": "https://i.ibb.co/0jjNVCm4/pajama-set-jpg.jpg", "category": "loungewear", "summary": "Satin pajama set.", "summarySw": "Seti ya pajama ya satin.", "description": "Luxury satin loungewear set.", "descriptionSw": "Seti ya nguo za mapumziko za satin za kifahari.", "material": "Satin", "materialSw": "Satin", "fit": "Loose", "fitSw": "Huru", "availability": "Available on Order", "availabilitySw": "Inapatikana Kwa Oda", "keywords": ["pajama", "loungewear", "set"] },
-    
-    { "id": 14, "name": "Women's Boyshort Underwear", "price": 18900, "image": "https://i.ibb.co/9mBXwkqm/womens-boyshort-underwear-jpg.jpg", "category": "intimates", "summary": "Soft cotton boyshorts.", "summarySw": "Boyshort za pamba laini.", "description": "Breathable everyday boyshort underwear.", "descriptionSw": "Chupi za kila siku za boyshort zinazopumua.", "material": "Cotton Spandex", "materialSw": "Pamba Spandex", "fit": "True to size", "fitSw": "Sawa na ukubwa", "availability": "In Stock", "availabilitySw": "Ipo Hifadhi", "keywords": ["boyshort", "underwear", "cotton"] }
-  ];
+  { 
+    "id": 1, 
+    "name": "African Bubu", 
+    "price": 30000, 
+    "image": "https://i.ibb.co/Zpw2hDhC/african-bubu-jpg.jpg", 
+    "category": "dress", 
+    "summary": "Flowing African Bubu with vibrant print.", 
+    "summarySw": "Bubu ya Kiafrika inayobeba na chapa hai.", 
+    "description": "Classic Bubu gown, lightweight and breathable.", 
+    "descriptionSw": "Gauni la kawaida la Bubu, nyepesi na inayopumua.", 
+    "material": "Ankara Cotton", 
+    "materialSw": "Pamba ya Ankara", 
+    "fit": "Free Size", 
+    "fitSw": "Ukubwa Huru", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["bubu", "african", "ankara"] 
+  },
+  
+  { 
+    "id": 2, 
+    "name": "Batik Cotton Maxi Gown", 
+    "price": 30000, 
+    "image": "https://i.ibb.co/7tY3WRvk/batik-maxi-gown-jpg.jpg", 
+    "category": "dress", 
+    "summary": "Artisan batik print maxi gown.", 
+    "summarySw": "Gauni refu la batiki la kisanii.", 
+    "description": "Hand-dyed batik maxi dress, elegant and flowy.", 
+    "descriptionSw": "Gauni refu la batiki lililotiwa rangi kwa mkono, kifahari na kinachotiririka.", 
+    "material": "100% Cotton Batik", 
+    "materialSw": "100% Pamba Batiki", 
+    "fit": "Relaxed fit", 
+    "fitSw": "Kina Kisawasawa", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["batik", "maxi", "gown"] 
+  },
+  
+  { 
+    "id": 4, 
+    "name": "High-Waisted Denim Pants", 
+    "price": 30000, 
+    "image": "https://i.ibb.co/DDTNsT56/denim-pants-jpg.jpg", 
+    "category": "pants", 
+    "summary": "Classic high-waisted denim.", 
+    "summarySw": "Denim ya kawaida ya kiuno cha juu.", 
+    "description": "Stretchy denim pants, perfect for daily chic looks.", 
+    "descriptionSw": "Suruali ya denim inayonyoosha, kamili kwa mitindo ya kila siku.", 
+    "material": "Cotton Denim", 
+    "materialSw": "Denim ya Pamba", 
+    "fit": "High-rise, skinny", 
+    "fitSw": "Kiuno juu, nyembamba", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["denim", "jeans", "high waisted"] 
+  },
+  
+  { 
+    "id": 5, 
+    "name": "High-Waisted Skinny Jeans", 
+    "price": 25000, 
+    "image": "https://i.ibb.co/0R82T3YK/skinny-jeans-jpg.jpg", 
+    "category": "pants", 
+    "summary": "Sleek skinny fit jeans.", 
+    "summarySw": "Jeans nyembamba laini.", 
+    "description": "Ultra-comfortable high-waisted skinny jeans.", 
+    "descriptionSw": "Jeans nyembamba za kiuno cha juu zenye starehe zaidi.", 
+    "material": "Cotton, Spandex", 
+    "materialSw": "Pamba, Spandex", 
+    "fit": "Skinny, stretch", 
+    "fitSw": "Nyembamba, kunyooka", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["skinny", "jeans", "stretch"] 
+  },
+  
+  { 
+    "id": 6, 
+    "name": "High-Waisted Tiered Maxi Skirt", 
+    "price": 28000, 
+    "image": "https://i.ibb.co/WvsNYk4H/maxi-skirt-jpg.jpg", 
+    "category": "skirt", 
+    "summary": "Flowy tiered maxi skirt.", 
+    "summarySw": "Sketi refu yenye matabaka.", 
+    "description": "Romantic tiered layers with elastic waist.", 
+    "descriptionSw": "Matabaka ya kimapenzi na kiuno cha elastic.", 
+    "material": "Rayon", 
+    "materialSw": "Rayon", 
+    "fit": "Free size, elastic band", 
+    "fitSw": "Ukubwa huru, bendi ya elastic", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["maxi skirt", "tiered"] 
+  },
+  
+  { 
+    "id": 10, 
+    "name": "Men's Cotton Boxer Shorts", 
+    "price": 5000, 
+    "image": "https://i.ibb.co/zV7MtBRM/boxer-shorts-jpg.jpg", 
+    "category": "mens", 
+    "summary": "Breathable cotton boxers.", 
+    "summarySw": "Boxa za pamba zinazopumua.", 
+    "description": "Soft elastic waistband boxer shorts.", 
+    "descriptionSw": "Kaptula za boxa zenye bendi laini ya elastic.", 
+    "material": "Pure Cotton", 
+    "materialSw": "Pamba Safi", 
+    "fit": "Regular", 
+    "fitSw": "Kawaida", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["boxers", "men", "underwear"] 
+  },
+  
+  { 
+    "id": 13, 
+    "name": "Two-Piece Pajama Set", 
+    "price": 18000, 
+    "image": "https://i.ibb.co/0jjNVCm4/pajama-set-jpg.jpg", 
+    "category": "loungewear", 
+    "summary": "Satin pajama set.", 
+    "summarySw": "Seti ya pajama ya satin.", 
+    "description": "Luxury satin loungewear set.", 
+    "descriptionSw": "Seti ya nguo za mapumziko za satin za kifahari.", 
+    "material": "Satin", 
+    "materialSw": "Satin", 
+    "fit": "Loose", 
+    "fitSw": "Huru", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["pajama", "loungewear", "set"] 
+  },
+  
+  { 
+    "id": 14, 
+    "name": "Women's Boyshort Underwear", 
+    "price": 5000, 
+    "image": "https://i.ibb.co/9mBXwkqm/womens-boyshort-underwear-jpg.jpg", 
+    "category": "intimates", 
+    "summary": "Soft cotton boyshorts.", 
+    "summarySw": "Boyshort za pamba laini.", 
+    "description": "Breathable everyday boyshort underwear.", 
+    "descriptionSw": "Chupi za kila siku za boyshort zinazopumua.", 
+    "material": "Cotton Spandex", 
+    "materialSw": "Pamba Spandex", 
+    "fit": "True to size", 
+    "fitSw": "Sawa na ukubwa", 
+    "availability": "Available", 
+    "availabilitySw": "Inapatikana", 
+    "keywords": ["boyshort", "underwear", "cotton"] 
+  }
+];
+  
   
   let currentFilter = "all";
   let currentSearchTerm = "";
